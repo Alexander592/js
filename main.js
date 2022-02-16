@@ -1,17 +1,19 @@
 function show(){
 	let age=parseInt(document.getElementById('age').value)
+	let div=document.getElementById('enner')
+
 
 	if(age<17){
-		console.log('Вы подросток')
+		div.innerHTML='<b>Вы подросток</b>'
 	}
 	else if (age<10){
-		console.log('Вы ребенок')
+		div.innerHTML='<b>Вы ребенок</b>'
 	}
 	else if (age>60){
-		console.log('вы пожилой')
+		div.innerHTML='<b>вы пожилой</b>'
 	}
 	else {
-		console.log('вы взрослый')
+		div.innerHTML='<b>вы взрослый</b>'
 
 	}
 }
