@@ -1,7 +1,6 @@
-let arr={
-	'name':'A',
-	'age':12,
-	'height':150
+let arr=[
+	{'id':1,'name':'Данила','surname':'Алферов'}
+]
+for (let i=0; i<arr.length;i++){
+	console.log(arr[i].name)
 }
-
-console.log(arr)
