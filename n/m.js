@@ -1,13 +1,11 @@
-let students = [
-	{'id': 1, 'name': 'Данила', 'surname': 'Алферов'},
-	{'id': 2, 'name': 'Тихон', 'surname': 'Балаганский'},
-	{'id': 3, 'name': 'Константин', 'surname': 'Бобровский'},
-	{'id': 4, 'name': 'Владимир', 'surname': 'Бурыкин'},
-	{'id': 5, 'name': 'Семён', 'surname': 'Велигжанин'}
-]
-
+ let students = []
 let current = 0
 
+function LoadFromSite(){
+	$.get('http://217.71.129.139:4035/students.php', function(data){
+		students = JSON.parse(data) ['response'];
+	})
+}
 
 function load_student(id) {
 	document.getElementById('name').value = students[id].name
@@ -15,23 +13,21 @@ function load_student(id) {
 }
 
 function next() {
-	document.getElementById('button vlevo').disabled = false
+	document.getElementById('btnprev').disabled = false
 	current++
 	load_student(current)
+	
 	if (current == 4) {
-		document.getElementById('button vpravo').disabled = true
+		document.getElementById('btnnext').disabled = true
 	}
 }
 
-function back() {
-	document.getElementById('button vpravo').disabled = false
+function prev() {
+	document.getElementById('btnnext').disabled = false
 	current--
 	load_student(current)
-	console.log(current)
+	
 	if (current == 0) {
-		document.getElementById('button vlevo').disabled = true
+		document.getElementById('btnprev').disabled = true
 	}
 }
-
-
-
