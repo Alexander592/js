@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name='viewport' content='width=device-width,
-		initial-scale=1.0'>
-		<title>PageTitle</title>
-		<script src='jquery-3.6.0.js'></script>
-		<script src='m.js'></script> 
-		<link rel='stylesheet' href='styles.css'> 
-	</head>
-	<body>
-<button onclick='LoadFromSite()'>Загрузить</button><br>
-<table id='tbl_all'>
-	<tr>
-	<th>ID</th>
-	<th>Имя</th>
-	<th>Фамилия</th>
-	<th></th>
-	</tr>
-</table>
-<div id='info'></div> 
-	</body>
-</html> 
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="jquery-3.6.0.js"></script>
+	<script src="m.js"></script>
+	<link rel='stylesheet' href='styles.css'> 
+	<title>Document</title>
+</head>
+<body>
+	<script>loadFromSite()</script>
+	<button onclick='abcsort()'>Sort</button>
+	<button onclick='reverse()'>Reverse</button>
+	<table id='tbl_all'>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Surname</th>
+				<th>Name</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody> </tbody>
+	</table>
+	<div id="info"></div>
+</body>
+</html>

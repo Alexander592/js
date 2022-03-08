@@ -1,37 +1,57 @@
-let students = []
-let max_id = -1
+ let students = []
 
-function LoadFromSite() {
-	$.get('http://217.71.129.139:4035/students.php', function(data){
-		students = JSON.parse(data) ['response']
-		show_table()
+function loadFromSite()  {
+	$.get('http://217.71.129.139:4035/students.php', function(data) {
+		students = JSON.parse(data)['response'];
+		createTable();
 	});
+	
 }
-function show_table() {
-	let table = $('#tbl_all')
-	for (let i=0; i < students.length; i++) {
-		if (i > max_id) {
-			max_id = i
-		let tr = $('<tr></tr>')
-		
-		let td1 = $('<td>' + students[i].id + '</td>')
-		let td2 = $('<td>' + students[i].surname + '</td>')
-		let td3 = $('<td>' + students[i].name + '</td>')
-		let td4 = $('<td><button onclick="show_info('+ i +')">Подробно</button></td>')
-		
-		tr.append(td1).append(td2).append(td3).append(td4) 
-		
+
+
+function createTable() {
+	
+	let table = $('#tbl_all>tbody')
+	table.html('')
+	for (let i = 0; i < students.length; i++) {
+		let tr = $('<tr></tr>');
+		let td1 = $(`<td> ${students[i].id} </td>`);
+		let td2 = $(`<td> ${students[i].surname} </td>`);
+		let td3 = $(`<td> ${students[i].name} </td>`);
+		let td4 = $(`<td><button onclick="showInfo(${i})">More info</buttom></td>`);
+		tr.append(td1).append(td2).append(td3).append(td4)
 		table.append(tr)
-		}
 	}
 }
 
-function show_info(id) {
-	let div = $('#info')
-	let header = $('<h1>Информация о студенте №' + id + '</h1>')
-	let name = $('<h3>' + students[id].name + ' ' + students[id].surname + '</h3>')
-	let img = $('<img src="http:/http://217.71.129.139:4035/' + students[id].logo + '">')
-	
+function showInfo(id) {
+	let div = $('#info');
+	let head = $(`<h1>Information about student № ${id+1}</h1>`);
+	let name = $(`<h3>${students[id].name} ${students[id].surname}</h3>`);
+	let img = $(`<img scr="http://217.71.129.139:4035/${students[id].logo}>`);
 	div.html('')
-	div.append(header).append(name).append(img)
+	div.append(head).append(name).append(img)
+}
+
+function compare( a, b ) {
+  if ( a.surname < b.surname ){
+    return -1;
+  }
+  if ( a.surname > b.surname ){
+    return 1;
+  }
+  return 0;
+}
+function abcsort() {
+	students.sort(compare);
+	console.log(students)
+	createTable();
+}
+
+function reverse() {
+	students.sort(compare)
+	students.reverse();
+	console.log(students)
+	createTable();
+
 }
