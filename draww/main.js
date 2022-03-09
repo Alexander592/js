@@ -3,25 +3,17 @@ function draw(){
 		 // Получение элемента canvas, контекста и свойства Math.PI
 	let canvas = document.getElementById('canva');
 	let ctx = canvas.getContext('2d');
-	let pi = Math.PI;
+	let positionX = 75; // начальная позиция X координаты
 
-	 ctx.beginPath();
-	ctx.lineWidth = 7;
-	ctx.strokeStyle = "green";
-	ctx.fillStyle="yellow";
-	ctx.arc(150, 150, 85, 0, 2*pi, false);
-	ctx.stroke();
-	ctx.fill();
-
-
-	ctx.beginPath();
-	ctx.fillStyle="red"; // цвет заливки
-	ctx.moveTo(75, 40);
-	ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
-	ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
-	ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
-	ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
-	ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
-	ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
-	ctx.fill();    
+	setInterval(function() {
+	    ctx.beginPath();
+	    ctx.clearRect(0,0,600,300); // очистка холста
+	    ctx.fillStyle = "pink"; // цвет заливки
+	    ctx.rect(positionX, 75, 75, 75); // x, y, width, height
+	    ctx.fill();
+	    positionX++; // изменение позиции
+	    if(positionX > 600) {
+	        positionX = 75;
+	    }
+	},60); // запуск каждые 60 миллисекунд 
 }
