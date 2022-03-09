@@ -1,0 +1,6 @@
+body{
+	background-image: url(lg.png);
+	background-position: center bottom; /* Положение фона */
+    background-repeat: no-repeat; /* Отменяем повторение фона */
+
+}
